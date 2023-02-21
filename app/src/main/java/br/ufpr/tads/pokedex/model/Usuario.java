@@ -1,4 +1,4 @@
-package br.ufpr.tads.pokedex.models;
+package br.ufpr.tads.pokedex.model;
 
 public class Usuario {
 

@@ -6,4 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".DashboardActivity">
 
+    <TextView
+        android:id="@+id/cadastrosTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="137dp"
+        android:text="Cadastrados"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/topTiposTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Tipos"
+        app:layout_constraintStart_toStartOf="@+id/cadastrosTextView"
+        app:layout_constraintTop_toBottomOf="@+id/cadastrosTextView" />
+
+    <TextView
+        android:id="@+id/topHabilidadesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Habilidades"
+        app:layout_constraintStart_toStartOf="@+id/topTiposTextView"
+        app:layout_constraintTop_toBottomOf="@+id/topTiposTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

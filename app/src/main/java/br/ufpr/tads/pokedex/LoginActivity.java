@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+
+import br.ufpr.tads.pokedex.tasks.LoginTask;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -16,7 +19,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void login(View view) {
-        Intent dashboardIntent = new Intent(this, DashboardActivity.class);
-        startActivity(dashboardIntent);
+        LoginTask task = new LoginTask(this);
+        task.execute("http://10.0.2.2:6060/login");
     }
+
+
 }
