@@ -16,7 +16,6 @@ public class DetalhesPokemonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_pokemon);
 
-        pokemon = (Pokemon) getIntent().getSerializableExtra("POKEMON");
 
     }
 }

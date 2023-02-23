@@ -1,9 +1,12 @@
 package br.ufpr.tads.pokedex.tasks;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.EditText;
 
@@ -30,6 +33,7 @@ import br.ufpr.tads.pokedex.LoginActivity;
 import br.ufpr.tads.pokedex.R;
 
 public class LoginTask extends AsyncTask<String, Void, Boolean> {
+    public static final String PREFS_NAME = "USUARIO_LOGADO";
 
     EditText usuarioEditText, passwordEditText;
     Context loginActivity = null;
@@ -45,6 +49,11 @@ public class LoginTask extends AsyncTask<String, Void, Boolean> {
         super.onPostExecute(logado);
 
         if(logado) {
+            SharedPreferences sp = loginActivity.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor Ed=sp.edit();
+            Ed.putString("usuario", this.usuarioEditText.getText().toString());
+            Ed.commit();
+
             Intent dashboardIntent = new Intent(loginActivity.getApplicationContext(), DashboardActivity.class);
             loginActivity.startActivity(dashboardIntent);
         } else {

@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 import br.ufpr.tads.pokedex.adapter.AdapterPokemons;
 import br.ufpr.tads.pokedex.model.Pokemon;
 import br.ufpr.tads.pokedex.model.Usuario;
+import br.ufpr.tads.pokedex.tasks.GetPokemonsPesquisarTask;
 import br.ufpr.tads.pokedex.tasks.GetPokemonsTask;
 import br.ufpr.tads.pokedex.tasks.RemovePokemonTask;
 
@@ -50,17 +53,11 @@ public class ListarPokemonsActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Pokemon pokemon = pokemonList.get(position);
-
-                        Intent intent = new Intent(getApplicationContext(), DetalhesPokemonActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
                         intent.putExtra("POKEMON", pokemon);
                         startActivity(intent);
-                    }
-                    @Override public void onLongItemClick(View view, int position) {
-                        Pokemon pokemon = pokemonList.get(position);
-                        pokemonList.remove(position);
 
-                        new RemovePokemonTask(progressDialog, recyclerView, getApplicationContext(), adapterPokemons, pokemonList)
-                                .execute("http://10.0.2.2:6060/pokemons/" + pokemon.getNome());
+
 
                     }
                 })

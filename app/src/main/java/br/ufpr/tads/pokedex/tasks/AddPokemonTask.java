@@ -1,6 +1,9 @@
 package br.ufpr.tads.pokedex.tasks;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.EditText;
 
@@ -24,6 +27,7 @@ import br.ufpr.tads.pokedex.ListarPokemonsActivity;
 import br.ufpr.tads.pokedex.R;
 
 public class AddPokemonTask  extends AsyncTask<String, Void, Boolean> {
+    public static final String PREFS_NAME = "USUARIO_LOGADO";
 
     EditText nomeEditText, tipoEditText, habilidadeEditText;
     CadastroActivity cadastroActivity;
@@ -61,10 +65,14 @@ public class AddPokemonTask  extends AsyncTask<String, Void, Boolean> {
                     new OutputStreamWriter(os, "UTF-8"));
 
             HashMap<String, String> postDataParams = new HashMap<String, String>();
+
+            SharedPreferences sp1 = cadastroActivity.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            String usuario = sp1.getString("usuario", null);
+
             postDataParams.put("nome", this.nomeEditText.getText().toString());
             postDataParams.put("tipo",  this.tipoEditText.getText().toString());
             postDataParams.put("habilidades",  this.habilidadeEditText.getText().toString());
-            postDataParams.put("usuario", "bruninha");
+            postDataParams.put("usuario", usuario);
             writer.write(getPostDataString(postDataParams));
 
             writer.flush();
