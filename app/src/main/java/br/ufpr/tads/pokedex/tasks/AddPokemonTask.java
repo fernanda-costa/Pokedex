@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,12 +30,14 @@ import br.ufpr.tads.pokedex.R;
 public class AddPokemonTask  extends AsyncTask<String, Void, Boolean> {
     public static final String PREFS_NAME = "USUARIO_LOGADO";
 
-    EditText nomeEditText, tipoEditText, habilidadeEditText;
+    Spinner tipo;
+    EditText nomeEditText, habilidadeEditText;
     CadastroActivity cadastroActivity;
+
     public AddPokemonTask(CadastroActivity cadastroActivity) {
         this.cadastroActivity = cadastroActivity;
         this.nomeEditText = cadastroActivity.findViewById(R.id.nomeEditText);
-        this.tipoEditText = cadastroActivity.findViewById(R.id.tipoEditText);
+        this.tipo = cadastroActivity.findViewById(R.id.tipoSpinner);
         this.habilidadeEditText = cadastroActivity.findViewById(R.id.habilidadeEditText);
     }
 
@@ -70,7 +73,7 @@ public class AddPokemonTask  extends AsyncTask<String, Void, Boolean> {
             String usuario = sp1.getString("usuario", null);
 
             postDataParams.put("nome", this.nomeEditText.getText().toString());
-            postDataParams.put("tipo",  this.tipoEditText.getText().toString());
+            postDataParams.put("tipo",  String.valueOf(this.tipo.getSelectedItemPosition()));
             postDataParams.put("habilidades",  this.habilidadeEditText.getText().toString());
             postDataParams.put("usuario", usuario);
             writer.write(getPostDataString(postDataParams));

@@ -4,15 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8FF4D4"
+
+
+    android:backgroundTint="#8FF4D4"
     tools:context=".SplashScreenActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="178dp"
-        android:text="Splash screen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="#FFFFFF"
+        android:backgroundTint="#8FF4D4"
+        android:text="Pokédex"
+        android:textColor="#000000"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="316dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

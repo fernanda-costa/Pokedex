@@ -43,21 +43,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/tipoEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Tipo"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeEditText" />
-
-    <EditText
         android:id="@+id/habilidadeEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -70,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tipoEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/tipoSpinner" />
 
     <Button
         android:id="@+id/removerButton"
@@ -81,4 +66,17 @@
         android:visibility="invisible"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="667dp" />
+
+    <Spinner
+        android:id="@+id/tipoSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/habilidadeEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomeEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,7 @@ public class GetTotalPokemonsTask extends AsyncTask<String, Void, Integer>  {
     @Override
     protected void onPostExecute(Integer totalPokemons) {
         super.onPostExecute(totalPokemons);
-        total.setText("Total de pokemons" + totalPokemons.toString());
+        total.setText("Total de pokemons: " + totalPokemons.toString());
     }
 
     @Override
