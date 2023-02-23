@@ -44,7 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.listar_pokemon_menu_item:
-                intent = new Intent(this, ListarActivity.class);
+                intent = new Intent(this, ListarPokemonsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.pesquisar_habilidade_menu_item:

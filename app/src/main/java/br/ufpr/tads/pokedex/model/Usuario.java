@@ -1,6 +1,8 @@
 package br.ufpr.tads.pokedex.model;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private String nome;
     private String login;

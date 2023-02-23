@@ -1,12 +1,8 @@
 package br.ufpr.tads.pokedex.tasks;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.EditText;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,9 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.ufpr.tads.pokedex.CadastroActivity;
-import br.ufpr.tads.pokedex.DashboardActivity;
-import br.ufpr.tads.pokedex.ListarActivity;
-import br.ufpr.tads.pokedex.LoginActivity;
+import br.ufpr.tads.pokedex.ListarPokemonsActivity;
 import br.ufpr.tads.pokedex.R;
 
 public class AddPokemonTask  extends AsyncTask<String, Void, Boolean> {
@@ -45,7 +39,7 @@ public class AddPokemonTask  extends AsyncTask<String, Void, Boolean> {
     protected void onPostExecute(Boolean logado) {
         super.onPostExecute(logado);
 
-        Intent irParaLista = new Intent(cadastroActivity.getApplicationContext(), ListarActivity.class);
+        Intent irParaLista = new Intent(cadastroActivity.getApplicationContext(), ListarPokemonsActivity.class);
         cadastroActivity.startActivity(irParaLista);
     }
 

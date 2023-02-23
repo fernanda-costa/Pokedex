@@ -1,9 +1,9 @@
 package br.ufpr.tads.pokedex.tasks;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
@@ -17,12 +17,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
-import br.ufpr.tads.pokedex.ListarActivity;
-import br.ufpr.tads.pokedex.R;
-import br.ufpr.tads.pokedex.adapter.AdapterListItemPokemon;
+import br.ufpr.tads.pokedex.adapter.AdapterPokemons;
 import br.ufpr.tads.pokedex.model.Pokemon;
 import br.ufpr.tads.pokedex.model.Usuario;
 
@@ -30,21 +27,31 @@ public class GetPokemonsTask extends AsyncTask<String, Void, List<Pokemon>> {
 
     RecyclerView recyclerViewPokemons;
     ProgressDialog progressDialog;
-    ListarActivity listarActivity;
-    AdapterListItemPokemon adapter;
-
-    public GetPokemonsTask(ListarActivity listarActivity, AdapterListItemPokemon adapter) {
-        this.listarActivity = listarActivity;
-        recyclerViewPokemons = listarActivity.findViewById(R.id.recyclerViewPokemons);
+    private Context context;
+    AdapterPokemons adapter;
+    List<Pokemon> pokemons;
+    public GetPokemonsTask(ProgressDialog progressDialog, RecyclerView recyclerViewPokemons, Context applicationContext, AdapterPokemons adapter, List<Pokemon> dados) {
+        this.progressDialog = progressDialog;
+        this.pokemons = dados;
+        this.context = applicationContext;
         this.adapter = adapter;
+        this.recyclerViewPokemons = recyclerViewPokemons;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog.setMessage("Aguarde...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(List<Pokemon> pokemons) {
-
         super.onPostExecute(pokemons);
-
-        adapter.updateReceiptsList(pokemons);
+        recyclerViewPokemons.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override
@@ -72,7 +79,7 @@ public class GetPokemonsTask extends AsyncTask<String, Void, List<Pokemon>> {
         }
 
         try {
-            List<Pokemon> pokemons = new ArrayList<>();
+            pokemons.clear();
             JSONArray jsonList = new JSONArray(buffer.toString());
             for (int i = 0; i < jsonList.length(); i++) {
                 JSONObject object = jsonList.getJSONObject(i);

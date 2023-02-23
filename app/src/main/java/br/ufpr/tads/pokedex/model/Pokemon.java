@@ -1,6 +1,8 @@
 package br.ufpr.tads.pokedex.model;
 
-public class Pokemon {
+import java.io.Serializable;
+
+public class Pokemon implements Serializable {
 
     private String nome;
     private int tipo;
