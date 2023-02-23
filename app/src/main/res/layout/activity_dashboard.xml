@@ -7,7 +7,7 @@
     tools:context=".DashboardActivity">
 
     <TextView
-        android:id="@+id/cadastrosTextView"
+        android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="62dp"
@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Tipos"
-        app:layout_constraintStart_toStartOf="@+id/cadastrosTextView"
-        app:layout_constraintTop_toBottomOf="@+id/cadastrosTextView" />
+        app:layout_constraintStart_toStartOf="@+id/totalTextView"
+        app:layout_constraintTop_toBottomOf="@+id/totalTextView" />
 
     <TextView
         android:id="@+id/topHabilidadesTextView"

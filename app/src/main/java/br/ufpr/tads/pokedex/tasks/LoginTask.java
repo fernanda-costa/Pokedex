@@ -1,6 +1,8 @@
 package br.ufpr.tads.pokedex.tasks;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.EditText;
@@ -45,6 +47,16 @@ public class LoginTask extends AsyncTask<String, Void, Boolean> {
         if(logado) {
             Intent dashboardIntent = new Intent(loginActivity.getApplicationContext(), DashboardActivity.class);
             loginActivity.startActivity(dashboardIntent);
+        } else {
+            new AlertDialog.Builder(this.loginActivity)
+                    .setTitle("Não foi possivel logar")
+                    .setMessage("Usuário ou senha incorretos")
+                    .setCancelable(false)
+                    .setPositiveButton("Ok",
+                            (dialogInterface, arg1) -> {
+                                dialogInterface.dismiss();
+                            })
+                    .show();
         }
     }
 

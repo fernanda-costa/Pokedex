@@ -24,10 +24,7 @@
             android:name=".CadastroActivity"
             android:exported="false" />
         <activity
-            android:name=".PesquisarHabilidadeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PesquisarTipoActivity"
+            android:name=".PesquisarPokemonActivity"
             android:exported="false" />
         <activity
             android:name=".ListarActivity"
